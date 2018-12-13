@@ -1,0 +1,18 @@
+{
+    "id": "owa.diabetesdashboard",
+    "description": "Detailed Information on Diabetes Individual.",
+    "order": 5,
+    "extensions": [
+        {
+            "id": "demoapp.homepageLink",
+            "extensionPointId": "org.openmrs.referenceapplication.homepageLink",
+            "type": "link",
+            "label": "Diabetes Dashboard",
+            "url": "owa/app/index.html",
+            "icon": "icon-list-alt",
+            "requiredPrivilege": "Replace with a privilege name, or else remove"
+        }
+    ]
+}
+
+}

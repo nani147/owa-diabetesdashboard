@@ -1,0 +1,22 @@
+  {
+    "id": "edu.iupui.soic.bhi.b691.bhanu",
+    "description": "Allow Concept Extraction of Notes",
+    "extensionPoints": [
+      {
+        "id": "subApp.apps",
+        "description": "Apps on the basic Apps App Home Page"
+      }
+    ],
+    "extensions": [
+      {
+        "id": "edu.iupui.soic.bhi.b691.bhanu.appId1",
+        "extensionPointId": "patientDashboard.overallActions",
+        "type": "link",
+        "label": "Open Diabetes Dashboard",
+        "url": "/owa/app/index.html?patientId={{patient.uuid}}",
+        "icon": "icon-signin",
+        "order": 23,
+        "requiredPrivilege": "Task: some random privilege"
+      }
+    ]
+  }
