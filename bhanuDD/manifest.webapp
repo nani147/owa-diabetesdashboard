@@ -1,0 +1,19 @@
+{
+  "version": "0.1.0",
+  "name": "Diabetesdashboard",
+  "description": "Detailed Information on Diabetes Individual.",
+  "launch_path": "index.html",
+  "icons": {
+    "48": "/img/omrs-button.png"
+  },
+  "developer": {
+    "name": "nani147",
+    "url": "https://github.com/nani147/openmrs-owa-diabetesdashboard"
+  },
+  "default_locale": "en",
+    "activities": {
+      "openmrs": {
+        "href": "*"
+      }
+    }
+}

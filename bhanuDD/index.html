@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="/openmrs/scripts/jquery-ui/css/green/jquery-ui.custom.css" type="text/css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" type="text/css"src="css/linecharts.css">
+</style><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+        <title>OpenMRS Electronic Medical Record</title>
+        <link rel="shortcut icon" type="image/ico" href="/openmrs/images/openmrs-favicon.ico">
+        <link rel="icon" type="image/png\" href="/openmrs/images/openmrs-favicon.png">
+
+  <script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/jquery-1.12.4.min.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/jquery-ui-1.9.2.custom.min.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/underscore-min.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/knockout-2.2.1.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/emr.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/jquery.toastmessage.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/jquery.simplemodal.1.4.4.min.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/coreapps/scripts/custom/deletePatient.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/coreapps/scripts/custom/visits.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/datetimepicker/bootstrap-datetimepicker.min.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/coreapps/scripts/patientdashboard/patient.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/angular.min.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/angular-resource.min.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/angular-common.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/angular-app.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/services/obsService.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/services/encounterService.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/ngDialog/ngDialog.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/moment.min.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/coreapps/scripts/stickyNote/resources/xeditable.min.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/coreapps/scripts/stickyNote/app.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/coreapps/scripts/stickyNote/controllers/stickyNoteCtrl.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/coreapps/scripts/stickyNote/directives/clickToEditObs.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/coreapps/scripts/web/coreapps.vendor.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/coreapps/scripts/web/coreapps.dashboardwidgets.js?cache=1542143608514"></script><style type="text/css">
+
+.table-striped .datepicker table tr td,
+.table-striped .datepicker table tr th {
+  background-color: transparent;
+}
+.input-append.date .add-on,
+.input-prepend.date .add-on {
+  cursor: pointer;
+}
+.input-append.date .add-on i,
+.input-prepend.date .add-on i {
+  margin-top: 3px;
+}
+.input-daterange input {
+  text-align: center;
+}
+.input-daterange input:first-child {
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
+.input-daterange input:last-child {
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+}
+.input-daterange .add-on {
+  display: inline-block;
+  width: auto;
+  min-width: 16px;
+  height: 20px;
+  padding: 4px 5px;
+  font-weight: normal;
+  line-height: 20px;
+  text-align: center;
+  text-shadow: 0 1px 0 #fff;
+  vertical-align: middle;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+</style><style type="text/css">.uib-position-measure {
+  display: block !important;
+  visibility: hidden !important;
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.uib-position-scrollbar-measure {
+  position: absolute !important;
+  top: -9999px !important;
+  width: 50px !important;
+  height: 50px !important;
+  overflow: scroll !important;
+}
+
+.uib-position-body-scrollbar-measure {
+  overflow: scroll !important;
+}</style><style type="text/css">[uib-typeahead-popup].dropdown-menu {
+  display: block;
+}
+</style>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/handlebars/handlebars.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/uicommons/scripts/angular-ui/ui-bootstrap-tpls-0.11.2.min.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/coreapps/scripts/conditionlist/lib/restangular.min.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/coreapps/scripts/conditionlist/restful-services/restful-service.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/coreapps/scripts/conditionlist/models/model.module.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/coreapps/scripts/conditionlist/models/concept.model.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/coreapps/scripts/conditionlist/models/condition.model.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/coreapps/scripts/conditionlist/emr.messages.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/coreapps/scripts/conditionlist/common.functions.js?cache=1542143608514"></script>
+<script type="text/javascript" src="/openmrs/ms/uiframework/resource/coreapps/scripts/conditionlist/controllers/manageconditions.controller.js?cache=1542143608514"></script>
+<link rel="stylesheet" href="/openmrs/ms/uiframework/resource/uicommons/styles/styleguide/jquery-ui-1.9.2.custom.min.css?cache=1542143608514" type="text/css">
+<link rel="stylesheet" href="/openmrs/ms/uiframework/resource/uicommons/styles/styleguide/jquery.toastmessage.css?cache=1542143608514" type="text/css">
+<link rel="stylesheet" href="/openmrs/ms/uiframework/resource/coreapps/styles/clinicianfacing/patient.css?cache=1542143608514" type="text/css">
+<link rel="stylesheet" href="/openmrs/ms/uiframework/resource/coreapps/styles/visit/visits.css?cache=1542143608514" type="text/css">
+<link rel="stylesheet" href="/openmrs/ms/uiframework/resource/uicommons/styles/datetimepicker.css?cache=1542143608514" type="text/css">
+<link rel="stylesheet" href="/openmrs/ms/uiframework/resource/coreapps/styles/patientHeader.css?cache=1542143608514" type="text/css">
+<link rel="stylesheet" href="/openmrs/ms/uiframework/resource/uicommons/styles/ngDialog/ngDialog.min.css?cache=1542143608514" type="text/css">
+<link rel="stylesheet" href="/openmrs/ms/uiframework/resource/coreapps/styles/stickynote/stickyNoteIcon.css?cache=1542143608514" type="text/css">
+<link rel="stylesheet" href="/openmrs/ms/uiframework/resource/appointmentschedulingui/styles/miniPatientAppointments.css?cache=1542143608514" type="text/css">
+<link rel="stylesheet" href="/openmrs/ms/uiframework/resource/coreapps/styles/conditionlist/conditions.css?cache=1542143608514" type="text/css">
+<link rel="stylesheet" href="/openmrs/ms/uiframework/resource/allergyui/styles/allergies.css?cache=1542143608514" type="text/css">
+<link rel="stylesheet" href="/openmrs/ms/uiframework/resource/appui/styles/header.css?cache=1542143608514" type="text/css">
+<link rel="stylesheet" href="/openmrs/ms/uiframework/resource/referenceapplication/styles/referenceapplication.css?cache=1542143608514" type="text/css">
+
+  <style>[hidden] { display: none !important; }</style>
+</head>
+<body>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+
+<div class="container">
+   <div id="header"></div>
+   <div id="patient-header"></div>
+   <fieldset>
+<legend><b>Glycemic Profile</b></legend>
+
+<div id="container" style="min-width: 310px; max-width: 400px; height: 300px; float: left; margin: 0 auto"></div>
+<div id="container2" style="min-width: 310px; max-width: 400px; height: 300px; float: left; margin: 0 auto"></div>
+</fieldset>
+<br>
+<fieldset>
+<legend><b>Lipid Profile</b></legend>
+<div id="container3" style="min-width: 270px; max-width: 400px; height: 300px; float: left; margin: 0 auto"></div>
+<div id="container4" style="min-width: 270px; max-width: 400px; height: 300px; float: left; margin: 0 auto"></div>
+<div id="container5" style="min-width: 270px; max-width: 400px; height: 300px; float: left; margin: 0 auto"></div>
+<div id="container6" style="min-width: 270px; max-width: 400px; height: 300px; float: left; margin: 0 auto"></div>
+</fieldset>
+<br>
+<fieldset>
+<legend><b>Renal Profile</b></legend>
+<div id="container7" style="min-width: 270px; max-width: 400px; height: 300px; float: left; margin: 0 auto"></div>
+<div id="container8" style="min-width: 270px; max-width: 400px; height: 300px; float: left; margin: 0 auto"></div>
+</fieldset>
+<br>
+      <fieldset>
+            <legend><b>DataTable<b></legend>
+            <table id="dataTable" class="display" style="width:100%">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>HbA1c(%)</th>
+                    <th>Fasting Glucose(mmol/L)</th>
+                    <th>Total Cholesterol(mmol/L)</th>
+                    <th>HDL-C(mmol/L)</th>
+                    <th>LDL-C(mmol/L)</th>
+                    <th>Triglycerides(mmol/L)</th>
+                    <th>eGFR(mL/min/1.73 m²)</th>
+                    <th>Serum creatinine(mg/dL)</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>Date</th>
+                    <th>HbA1c(%)</th>
+                    <th>Fasting Glucose(mmol/L)</th>
+                    <th>Total Cholesterol(mmol/L)</th>
+                    <th>HDL-C(mmol/L)</th>
+                    <th>LDL-C(mmol/L)</th>
+                    <th>Triglycerides(mmol/L)</th>
+                    <th>eGFR(mL/min/1.73 m²)</th>
+                    <th>Serum creatinine(mg/dL)</th>
+                </tr>
+                </tfoot>
+            </table>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend><b>Lab Parameters Trends</b></legend>
+            <div id="container9" style="min-width: 360px; max-width: 400px; height: 350px; float: left; margin: 0 auto"></div>
+            <div id="container10" style="min-width: 360px; max-width: 400px; height: 350px; float: left; margin: 0 auto"></div>
+            <div id="container11" style="min-width: 360px; max-width: 400px; height: 350px; float: left; margin: 0 auto"></div>
+            <div id="container12" style="min-width: 360px; max-width: 400px; height: 350px; float: left; margin: 0 auto"></div>
+            <div id="container13" style="min-width: 360px; max-width: 400px; height: 350px; float: left; margin: 0 auto"></div>
+            <div id="container14" style="min-width: 360px; max-width: 400px; height: 350px; float: left; margin: 0 auto"></div>
+            <div id="container15" style="min-width: 360px; max-width: 400px; height: 350px; float: left; margin: 0 auto"></div>
+            <div id="container16" style="min-width: 360px; max-width: 400px; height: 350px; float: left; margin: 0 auto"></div>
+        </fieldset>
+        <script src="js/getjson.js"></script>
+        <script type="text/javascript"src="js/hc.js"></script>
+        <script type="text/javascript"src="js/lp.js"></script>
+        <script type="text/javascript"src="js/linechart.js"></script>
+        <script src="js/person.js"></script>
+</body>
+</div>
+</html>
